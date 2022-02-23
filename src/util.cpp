@@ -10,19 +10,18 @@ void DrawConcentricCircle(cv::Mat mask, const cv::Point2i &center, int radius1, 
 
 int main()
 {
-    cv::Mat src = cv::Mat(9000, 9000, CV_8UC3, cv::Scalar(255, 255, 255));
+    cv::Mat src = cv::Mat(2000, 2000, CV_8UC3, cv::Scalar(255, 255, 255));
     cv::Mat result = src.clone();
     for(int x = 0; x < 7; x++)
     {
         for (int y = 0; y < 7; y++)
         {
-            DrawConcentricCircle(result, cv::Point(x * 1200 + 900, y * 1200 + 900), 300, 500, cv::Scalar(0, 0, 0),-10, 16);
-
+            DrawConcentricCircle(result, cv::Point(x * 250 + 250, y * 250 + 250), 50, 100, cv::Scalar(0, 0, 0),-10, 16);
         }
     }
     imshow("result", result);
     cv::imwrite("/Users/xubin/Desktop/calibration/image/target.jpg", result);
-//    cv::waitKey(0);
+    cv::waitKey(0);
     system("pause");
     return 0;
 }

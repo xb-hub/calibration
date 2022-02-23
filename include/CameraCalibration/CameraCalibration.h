@@ -14,8 +14,8 @@ namespace Camera_Calibration
 class CameraCalibration
 {
 private:
-//    std::vector<cv::Point3f> objpoints;         // 世界坐标系下坐标
-//    std::vector<cv::Point2f> imgpoints;         // 图像坐标系下坐标
+    std::vector<cv::Point3f> objpoints;         // 世界坐标系下坐标，z=0
+    std::vector<cv::Point3f> imgpoints;         // 图像坐标系下坐标
 //
 //    Eigen::Vector3d center;
 

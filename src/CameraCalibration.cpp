@@ -9,40 +9,17 @@ CameraCalibration::CameraCalibration() :
     intrinsic_matrix({{3000, 0, 640}, {0, 3000, 480}, {0, 0, 1}}),
     external_matrix({{1, 0, 0, -3000}, {0, 1, 0, -1000}, {0, 0, 1, -500}})
 {
-    Eigen::Matrix3d circle1;
-    circle1 << 1, 0, 0,
-              0, 1, 0,
-              0, 0, -90000;
-    concenteric_circle.push_back(circle1);
-    Eigen::Matrix3d circle2;
-    circle2 << 1, 0, 0,
-               0, 1, 0,
-               0, 0, -160000;
-    concenteric_circle.push_back(circle2);
-    Eigen::Matrix3d circle3;
-    circle3 << 1, 0, 0,
-               0, 1, 0,
-               0, 0, -250000;
-    concenteric_circle.push_back(circle3);
-    Eigen::Matrix3d circle4;
-    circle4 << 1, 0, 0,
-               0, 1, 0,
-               0, 0, -360000;
-    concenteric_circle.push_back(circle4);
-    Eigen::Vector3d pole1;
-    pole1 << 700,
-             0,
-             1;
-    poles.push_back(pole1);
-    Eigen::Vector3d pole2;
-    pole2 << 800,
-             800,
-             1;
-    poles.push_back(pole2);
-    H_matrix.col(0) = (intrinsic_matrix * external_matrix).col(0);
-    H_matrix.col(1) = (intrinsic_matrix * external_matrix).col(1);
-    H_matrix.col(2) = (intrinsic_matrix * external_matrix).col(3);
-    std::cout << "H_matrix:" << std::endl << H_matrix << std::endl;
+    for(int x = 0; x < 7; x++)
+    {
+        for (int y = 0; y < 7; y++)
+        {
+            cv::Point3d point;
+            point.x = (x + 1) * 250;
+            point.y = (y + 1) * 250;
+            point.z = 1;
+            objpoints.push_back(point);
+        }
+    }
 }
 
 CameraCalibration::~CameraCalibration()
