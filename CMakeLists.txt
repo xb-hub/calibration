@@ -14,3 +14,6 @@ include_directories(
 
 add_executable(calibration main.cpp src/CameraCalibration.cpp)
 target_link_libraries(calibration ${OpenCV_LIBS} ${Eigen3_LIBRARIES})
+
+add_executable(util src/util.cpp)
+target_link_libraries(util ${OpenCV_LIBS})
